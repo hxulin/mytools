@@ -16,7 +16,7 @@ import java.util.List;
 public class JSONUtilsTest {
 
     private User user = new User(1L, "hxulin", "123456");
-    private List<Address> addresses = new ArrayList<Address>();
+    private List<Address> addresses = new ArrayList<>();
     private Address a1 = new Address("hxulin's home", "hxulin's school", user);
     private Address a2 = new Address("hxulin's home2", "hxulin's school2", user);
 

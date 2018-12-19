@@ -13,8 +13,8 @@ import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class SimpleSerializerFilter extends SimplePropertyPreFilter {
 	
-	private Map<Class, Set<String>> includes = new HashMap<Class, Set<String>>();
-	private Map<Class, Set<String>> excludes = new HashMap<Class, Set<String>>();
+	private Map<Class, Set<String>> includes = new HashMap<>();
+	private Map<Class, Set<String>> excludes = new HashMap<>();
 	
 	SimpleSerializerFilter() {
 		
@@ -54,7 +54,7 @@ public class SimpleSerializerFilter extends SimplePropertyPreFilter {
     private void addToMap(Map<Class, Set<String>> map, Class clazz, String[] fields) {
     	Set<String> fieldSet = map.get(clazz);
     	if (fieldSet == null) {
-    		fieldSet = new HashSet<String>();
+    		fieldSet = new HashSet<>();
     	}
         fieldSet.addAll(Arrays.asList(fields));
         map.put(clazz, fieldSet);

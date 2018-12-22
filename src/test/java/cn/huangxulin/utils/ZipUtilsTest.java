@@ -13,15 +13,27 @@ import java.util.Set;
  */
 public class ZipUtilsTest {
 
-    private String destFileName = "D:/zipTest/target.zip";
-    private String targetFolder = "D:/zipTest/unZip";
+    /**
+     * 加密压缩和解压的密码
+     */
+    private static final String ZIP_PASSWORD = "password";
+
+    /**
+     * 压缩最终生成的文件名
+     */
+    private String destFileName = "zipTest/target.zip";
+
+    /**
+     * 解压缩时，文件解压后的存放路径
+     */
+    private String targetFolder = "zipTest/unZip";
 
     /**
      * 测试压缩单个文件
      */
     @Test
     public void test1() throws Exception {
-        String srcFileName = "D:\\zipTest\\srcFileFolder\\workspace\\hello-world.jpeg";
+        String srcFileName = "zipTest/srcFileFolder/workspace/hello-world.jpeg";
         ZipUtils.zip(srcFileName, destFileName);
     }
 
@@ -31,8 +43,8 @@ public class ZipUtilsTest {
     @Test
     public void test2() throws Exception {
         Set<String> srcFileNames = new HashSet<>();
-        srcFileNames.add("D:\\zipTest\\srcFileFolder\\workspace\\hello-world.jpeg");
-        srcFileNames.add("D:\\zipTest\\srcFileFolder2\\heart.py");
+        srcFileNames.add("zipTest/srcFileFolder/workspace/hello-world.jpeg");
+        srcFileNames.add("zipTest/srcFileFolder/settings.xml");
         ZipUtils.zip(srcFileNames, destFileName);
     }
 
@@ -41,8 +53,8 @@ public class ZipUtilsTest {
      */
     @Test
     public void test3() throws Exception {
-        String srcFileName = "D:\\zipTest\\srcFileFolder\\workspace\\hello-world.jpeg";
-        ZipUtils.zip(srcFileName, destFileName, "password");
+        String srcFileName = "zipTest/srcFileFolder/workspace/hello-world.jpeg";
+        ZipUtils.zip(srcFileName, destFileName, ZIP_PASSWORD);
     }
 
     /**
@@ -51,9 +63,9 @@ public class ZipUtilsTest {
     @Test
     public void test4() throws Exception {
         Set<String> srcFileNames = new HashSet<>();
-        srcFileNames.add("D:\\zipTest\\srcFileFolder\\workspace\\hello-world.jpeg");
-        srcFileNames.add("D:\\zipTest\\srcFileFolder2\\heart.py");
-        ZipUtils.zip(srcFileNames, destFileName, "password");
+        srcFileNames.add("zipTest/srcFileFolder/workspace/hello-world.jpeg");
+        srcFileNames.add("zipTest/srcFileFolder/settings.xml");
+        ZipUtils.zip(srcFileNames, destFileName, ZIP_PASSWORD);
     }
 
     /**
@@ -61,7 +73,7 @@ public class ZipUtilsTest {
      */
     @Test
     public void test5() throws Exception {
-        String folderName = "D:\\zipTest\\srcFileFolder";
+        String folderName = "zipTest/srcFileFolder";
         ZipUtils.zipFolder(folderName, destFileName);
     }
 
@@ -70,8 +82,8 @@ public class ZipUtilsTest {
      */
     @Test
     public void test6() throws Exception {
-        String folderName = "D:\\zipTest\\srcFileFolder";
-        ZipUtils.zipFolder(folderName, destFileName, "password");
+        String folderName = "zipTest/srcFileFolder";
+        ZipUtils.zipFolder(folderName, destFileName, ZIP_PASSWORD);
     }
 
     /**
@@ -95,7 +107,7 @@ public class ZipUtilsTest {
      */
     @Test
     public void test9() throws Exception {
-        ZipUtils.unZip(destFileName, targetFolder, "password");
+        ZipUtils.unZip(destFileName, targetFolder, ZIP_PASSWORD);
     }
 
     /**
@@ -103,7 +115,7 @@ public class ZipUtilsTest {
      */
     @Test
     public void test10() throws Exception {
-        ZipUtils.unZip(new File(destFileName), targetFolder, "password");
+        ZipUtils.unZip(new File(destFileName), targetFolder, ZIP_PASSWORD);
     }
 
 }

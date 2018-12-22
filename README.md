@@ -24,7 +24,7 @@
 | ------------------------------------------------------------ | ------------------------------------------------------ |
 | public static String **toJson** (Object object)              | 将 Java 对象序列化为 JSON 字符串                       |
 | public static String **toJson** (Object object, SerializationStrategy... strategies) | 根据指定的序列化策略，将 Java 对象序列化为 JSON 字符串 |
-| public static <T> T **fromJson** (String text, Class<T> clazz) | 将字符串反序列化为 Java 对象                           |
+| public static &lt;T&gt; T **fromJson** (String text, Class&lt;T&gt; clazz) | 将字符串反序列化为 Java 对象                           |
 
 此工具类基于 [fastjson](https://github.com/alibaba/fastjson) 封装，**可以动态指定需要序列化的字段**，轻松解决对象彼此引用时，JSON 序列化无限递归的问题。
 
@@ -71,4 +71,27 @@
 | public static boolean **verify** (byte[] data, String publicKey, String sign) throws Exception | 校验数字签名         |
 
 ### 4、文件压缩和解压
+
+| ZipUtils                                                     |                  |
+| ------------------------------------------------------------ | ---------------- |
+| public static void **zip** (String srcFileName, String destFileName) throws ZipException | 压缩单个文件     |
+| public static void **zip** (Set&lt;String&gt; srcFileNames, String destFileName) throws ZipException | 压缩多个文件     |
+| public static void **zip** (String srcFileName, String destFileName, String password) throws ZipException | 加密压缩单个文件 |
+| public static void **zip** (Set&lt;String&gt; srcFileNames, String destFileName, String password) throws ZipException | 加密压缩多个文件 |
+| public static void **zipFolder** (String folderName, String destFileName) throws ZipException | 压缩文件夹       |
+| public static void **zipFolder** (String folderName, String destFileName, String password) throws ZipException | 加密压缩文件夹   |
+| public static void **unZip** (String zipFileName, String targetFolder) throws ZipException | 解压缩文件       |
+| public static void **unZip** (File zipFile, String targetFolder) throws ZipException | 解压缩文件       |
+| public static void **unZip** (String zipFileName, String targetFolder, String password) throws ZipException | 解压缩加密的文件 |
+| public static void **unZip** (File zipFile, String targetFolder, String password) throws ZipException | 解压缩加密的文件 |
+
+此工具类基于 [zip4j](http://www.lingala.net/zip4j/) 封装，**压缩和解压的文件路径请不要包含中文，有可能出现中文文件名乱码**。
+
+```html
+<dependency>
+    <groupId>net.lingala.zip4j</groupId>
+    <artifactId>zip4j</artifactId>
+    <version>1.3.2</version>
+</dependency>
+```
 

@@ -95,3 +95,10 @@
 </dependency>
 ```
 
+### 5、文本文件处理
+
+| TxtUtils                                                     |                                                      |
+| ------------------------------------------------------------ | ---------------------------------------------------- |
+| public static List&lt;String&gt; **readTxt** (File txtFile) throws IOException | 将文本文件按行读取，将每一行的数据封装到 List 集合中 |
+| public static void **writeTxt** (List&lt;String&gt; list, File txtFile) throws IOException | 将 List 集合中的数据分行写到文本文件中               |
+

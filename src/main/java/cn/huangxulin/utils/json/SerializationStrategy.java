@@ -1,7 +1,7 @@
 package cn.huangxulin.utils.json;
 
 /**
- * 序列化策略
+ * 功能描述: 序列化策略
  * 
  * @author hxulin
  *

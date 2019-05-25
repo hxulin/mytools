@@ -16,7 +16,7 @@ public class TxtUtilsTest {
     @Test
     public void testReadTxt() throws Exception {
         String txtFile = "zipTest/srcFileFolder/settings.xml";
-        List<String> linesData = TxtUtils.readTxt(new File(txtFile));
+        List<String> linesData = TxtUtils.readTxtToList(new File(txtFile));
         for (String line : linesData) {
             System.out.println(line);
         }
@@ -27,6 +27,6 @@ public class TxtUtilsTest {
     public void testWriteTxt() throws Exception {
         String txtFile = "zipTest/write-txt.txt";
         List<String> list = Arrays.asList("ABC", "", "123", "", "");
-        TxtUtils.writeTxt(list, new File(txtFile));
+        TxtUtils.writeTxtFromList(list, new File(txtFile));
     }
 }

@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
 /**
- * JSON序列化和反序列化的工具类
+ * 功能描述: JSON序列化和反序列化的工具类
  *
  * @author hxulin
  */
@@ -24,7 +24,7 @@ public final class JSONUtils {
 
     }
 
-    private static void addFilterRule(Class entryClazz, String[] includes, String[] excludes, SimpleSerializerFilter filter) {
+    private static void addFilterRule(Class<?> entryClazz, String[] includes, String[] excludes, SimpleSerializerFilter filter) {
         if (includes.length > 0 && excludes.length > 0) {
             throw new IncludeAndExcludeConflictException("Can not use both include field and exclude field in a serialization strategy.");
         } else if (includes.length > 0) {

@@ -21,12 +21,51 @@ public final class TxtUtils {
     }
 
     /**
+     * 读取文本文件内容
+     *
+     * @param txtFile 需要读取的文本文件
+     * @return 文件内容
+     */
+    public static String readTxt(File txtFile) throws IOException {
+        StringBuilder sBuilder = new StringBuilder(256);
+        if (txtFile.exists()) {
+            InputStreamReader reader = new InputStreamReader(new FileInputStream(txtFile), CHARACTER_ENCODING);
+            BufferedReader br = new BufferedReader(reader);
+            String line;
+            while ((line = br.readLine()) != null) {
+                sBuilder.append(line);
+            }
+            br.close();
+        }
+        return sBuilder.toString();
+    }
+
+    /**
+     * 将字符串内容写到文本文件中
+     *
+     * @param data    需要写入文件的字符串内容
+     * @param txtFile 指定需要写入的文件
+     */
+    public static void writeTxt(String data, File txtFile) throws IOException {
+        if (data == null) {
+            return;
+        }
+        Path newFilePath = Paths.get(txtFile.toURI());
+        Files.deleteIfExists(newFilePath);
+        Files.createFile(newFilePath);
+        Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(txtFile), CHARACTER_ENCODING));
+        out.write(data);
+        out.flush();
+        out.close();
+    }
+
+    /**
      * 将文本文件按行读取，然后将每一行的值封装到List集合中
      *
      * @param txtFile 需要读取的文本文件
      * @return 封装在集合中的数据
      */
-    public static List<String> readTxt(File txtFile) throws IOException {
+    public static List<String> readTxtToList(File txtFile) throws IOException {
         List<String> linesData = new ArrayList<>();
         if (txtFile.exists()) {
             InputStreamReader reader = new InputStreamReader(new FileInputStream(txtFile), CHARACTER_ENCODING);
@@ -54,14 +93,14 @@ public final class TxtUtils {
      * @param list    需要写入文件的集合
      * @param txtFile 指定需要写入的文件
      */
-    public static void writeTxt(List<String> list, File txtFile) throws IOException {
+    public static void writeTxtFromList(List<String> list, File txtFile) throws IOException {
         if (list == null) {
             return;
         }
         Path newFilePath = Paths.get(txtFile.toURI());
         Files.deleteIfExists(newFilePath);
         Files.createFile(newFilePath);
-        StringBuilder txtBuilder = new StringBuilder(80);
+        StringBuilder txtBuilder = new StringBuilder(256);
         for (String str : list) {
             txtBuilder.append(str).append("\r\n");
         }

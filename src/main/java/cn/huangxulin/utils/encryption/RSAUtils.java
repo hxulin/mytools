@@ -15,7 +15,7 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 
 /**
- * RSA加解密、签名、验签的工具类
+ * 功能描述: RSA加解密、签名、验签的工具类
  *
  * @author hxulin
  */

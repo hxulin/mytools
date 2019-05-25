@@ -7,7 +7,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * AES加解密的工具类
+ * 功能描述: AES加解密的工具类
  *
  * @author hxulin
  */

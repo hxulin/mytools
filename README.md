@@ -99,6 +99,45 @@
 
 | TxtUtils                                                     |                                                      |
 | ------------------------------------------------------------ | ---------------------------------------------------- |
-| public static List&lt;String&gt; **readTxt** (File txtFile) throws IOException | 将文本文件按行读取，将每一行的数据封装到 List 集合中 |
-| public static void **writeTxt** (List&lt;String&gt; list, File txtFile) throws IOException | 将 List 集合中的数据分行写到文本文件中               |
+| public static String **readTxt** (File txtFile) throws IOException | 读取文本文件内容                                     |
+| public static void **writeTxt** (String data, File txtFile) throws IOException | 将字符串内容写到文本文件中                           |
+| public static List&lt;String&gt; **readTxtToList** (File txtFile) throws IOException | 将文本文件按行读取，将每一行的数据封装到 List 集合中 |
+| public static void **writeTxtFromList** (List&lt;String&gt; list, File txtFile) throws IOException | 将 List 集合中的数据分行写到文本文件中               |
+
+### 6、`JavaBean` 转换
+
+| Converter                                                    |                     |
+| ------------------------------------------------------------ | ------------------- |
+| public static Object **map2Object** (Map&lt;String, Object&gt; map, Class&lt;?&gt; clazz) | 将Map转换为JavaBean |
+| public static Map&lt;String, Object&gt; **object2Map** (Object obj) | 将JavaBean转换为Map |
+
+### 7、对象克隆
+
+| CloneUtils                                                   |              |
+| ------------------------------------------------------------ | ------------ |
+| public static &lt;T&gt; T **deepClone** (T t) throws IOException, ClassNotFoundException | 深度克隆对象 |
+
+### 8、异常相关
+
+| ExceptionUtils                                               |                    |
+| ------------------------------------------------------------ | ------------------ |
+| public static String **getStackTrace** (Throwable throwable) | 获取异常的堆栈信息 |
+
+### 9、`UUID` 工具
+
+| UUIDUtils                                             |                                    |
+| ----------------------------------------------------- | ---------------------------------- |
+| public static String **createUUID** ()                | 生成一个随机的UUID                 |
+| public static String **create32UUID** ()              | 生成一个32位不带中划线的UUID       |
+| public static String **createRandomString** (int len) | 生成一个字母和数字组合的随机字符串 |
+| public static String **createRandomNumber** (int len) | 生成一个数字组成的随机字符串       |
+
+### 10、日期时间处理
+
+| DateUtils                                                  |                           |
+| ---------------------------------------------------------- | ------------------------- |
+| public static Date **getDayStart** (Date date)             | 获取某个日期的起始时间点  |
+| public static Date **getDayEnd** (Date date)               | 获取某个日期的终止时间点  |
+| public static Date **addMinutes** (Date date, int minutes) | 计算 minutes 分钟后的时间 |
+| public static Date **addDay** (Date date, int day)         | 计算 day 天后的时间       |
 

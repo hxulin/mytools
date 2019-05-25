@@ -43,6 +43,16 @@ public final class DateUtils {
     }
 
     /**
+     * 计算多少分钟后的时间
+     */
+    public static Date addMinutes(Date date, int minutes) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MINUTE, minutes);
+        return calendar.getTime();
+    }
+
+    /**
      * 计算 day 天后的时间
      */
     public static Date addDay(Date date, int day) {

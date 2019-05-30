@@ -125,19 +125,39 @@
 
 ### 9、`UUID` 工具
 
-| UUIDUtils                                             |                                    |
-| ----------------------------------------------------- | ---------------------------------- |
-| public static String **createUUID** ()                | 生成一个随机的UUID                 |
-| public static String **create32UUID** ()              | 生成一个32位不带中划线的UUID       |
-| public static String **createRandomString** (int len) | 生成一个字母和数字组合的随机字符串 |
-| public static String **createRandomNumber** (int len) | 生成一个数字组成的随机字符串       |
+| UUIDUtils                                             |                                |
+| ----------------------------------------------------- | ------------------------------ |
+| public static String **createUUID** ()                | 生成随机的UUID                 |
+| public static String **create32UUID** ()              | 生成32位不带中划线的UUID       |
+| public static String **createRandomString** (int len) | 生成字母和数字组合的随机字符串 |
+| public static String **createRandomNumber** (int len) | 生成数字组成的随机字符串       |
 
 ### 10、日期时间处理
 
-| DateUtils                                                  |                           |
-| ---------------------------------------------------------- | ------------------------- |
-| public static Date **getDayStart** (Date date)             | 获取某个日期的起始时间点  |
-| public static Date **getDayEnd** (Date date)               | 获取某个日期的终止时间点  |
-| public static Date **addMinutes** (Date date, int minutes) | 计算 minutes 分钟后的时间 |
-| public static Date **addDay** (Date date, int day)         | 计算 day 天后的时间       |
+| DateUtils                                                  |                                                 |
+| ---------------------------------------------------------- | ----------------------------------------------- |
+| public static Date **getDayStart** (Date date)             | 获取某个日期当天的起始时间点                    |
+| public static Date **getDayEnd** (Date date)               | 获取某个日期当天的终止时间点                    |
+| public static Date **addMinutes** (Date date, int minutes) | 计算 minutes 分钟后的时间（负数表示多少分钟前） |
+| public static Date **addDay** (Date date, int day)         | 计算 day 天后的时间（负数表示多少天前）         |
 
+### 11、`Id` 生成器
+
+| IdWorker                                      |                 |
+| --------------------------------------------- | --------------- |
+| public static synchronized long **nextId** () | 获取一个新的 Id |
+
+> 该 `Id` 生成器的实现来源于 twitter 开源的 snowflake 算法。
+>
+> 分布式环境中，每一个部署的项目，应该指定 datacenterId 和 workerId，达到全局生成的 id 都唯一。
+>
+> 如：Spring 容器启动时
+>
+> ```java
+> // datacenterId 表示机房编号，取值范围在 0-31 之间，默认值为0
+> IdWorker.INSTANCE.setDatacenterId(5L);
+> // workerId 表示机器编号，取值范围在 0-31 之间，默认值为0
+> IdWorker.INSTANCE.setWorkerId(2L);
+> ```
+>
+> 默认的机房编号和机器编号均为0，**非分布式环境可以不做任何配置，直接使用即可**。

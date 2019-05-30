@@ -76,7 +76,7 @@ public enum IdWorker {
         long timestamp = INSTANCE.timeGen();
 
         if (timestamp < INSTANCE.lastTimestamp) {
-            System.err.printf("clock is moving backwards. Rejecting requests until %d.", INSTANCE.lastTimestamp);
+            System.err.printf("Clock is moving backwards. Rejecting requests until %d.", INSTANCE.lastTimestamp);
             throw new RuntimeException(String.format(
                     "Clock moved backwards. Refusing to generate id for %d milliseconds.", INSTANCE.lastTimestamp - timestamp));
         }
